@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <script src = "https://maps.googleapis.com/maps/api/js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Local Schools</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9bILq0BA8VHrKytVrRUK7Rx8849IgaEQ&callback=initMap"
+    type="text/javascript"></script>
+    <script type="text/javascript">
+        function initMap() {
+            var mapOptions = {
+              center:new google.maps.LatLng(39.103119, -84.512016),
+              zoom:5
+            } 
+            var map = new google.maps.Map(document.getElementById("map"),mapOptions);
+            var icon = {
+                url:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPEAAADRCAMAAAAquaQNAAAAkFBMVEX////jGDfiCTDhABnhABX++PniACnpY3Dxo6roV2biACXiACviACjhACDjFTXiACP0vcLjHjr88PH52dzvmaD86+z1wcX30NPztrv2x8vkMEf75+nhABDmRVf41djukprreIPujJXkKEHysLbthI7xp6364uToX23nUWHmQlXqcX3ujpfqanfmRFbgAADreoUgz424AAANrElEQVR4nO2daXuqOhSFMQxVIME61KFa51qt5/b//7sLnURZK4KASh/Xp3tPZXhJsrOzdwajll6mbRSjR5XqeW6zoOcd6k58J74TF6E78Z34Tlys7sR/n1gglUys4EMTMsshfgDaYeTCiHfooUk1BgU9L4WscolvUHfiO/Hf0534Tvz3dCe+GnGr3es3J6HeQ49kOvn8r36/3263Cn6XGyF+sEwZuK7jhYrcTu9TrutKaVricf3Rab4U9E63Qkwc/E8pJTzHlab/tly0cz+qCsS/5MILuTeTZivPo6pE/M3tuebj7Anf57l+svJfmJhVygzEX9TBqLHqJu/zNJLWfFvvad7/ksSv7/6Y/CkjcSThW5v6MXTHiSq/E1iPuw4ZgV6M2K4PTU80yF/PIA6lHGuzOHjV7c99lPCH+FEXIu7tpK/CcimWOJRw5a63v89wH2US0ysSL4byi6h44uimcr76eV+5/2enfi1iu+O6P18+K7Hwfd+h0bhfKd+aPUe3eY0Ru8Scl01sLy0nVtOyEYvdarXqfOzGoUfmetqwqGc9vISmOtj/i3y+BnFrOfIOELIRO6ufv9vt/nJjBTpqYb61687+/0fkUaUSdw55sxMfNcXe+9x0OLSI1emaIqa6TOKF4yfeKR9xqNeOkqmsnNhemrg3D5KlkZ841GBtpWBmprosYntrodpXCHHoq05HJ5kDFvQvh3jhefC+BRGHlbthnshomcDrLo249SbJ6xRGHNbtmoMu+ZVkF5ZA3OfNrEBiw/iADedbio1ZSiBeS3jLL+K3AomNJ43VFh+XIm47GpsiRu9FEhutOX2Yv7gQcWfEa5qy1syanElsGONEl/8t2WOXFEv8wGu0CoYvmgvPJDa2Ln6cSWNhRRJ3h7hPiuS5K92lZxMbO1jKStALCiTumbRVKXOnjz+eT2y8oUupiSyS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",//url 
+                scaledSize: new google.maps.Size(30,30), //scaled size
+                origin: new google.maps.Point(0,0), //origin
+                anchor: new google.maps.Point(0,0), //anchor
+            }
+
+            var marker = new google.maps.Marker({
+               position: new google. maps.LatLng(39.103119,-84.512016),
+               map: map,
+               icon: icon,
+               animation: google.maps.Animation.DROP,
+            });
+
+            var infowindow = new google.maps.InfoWindow({
+               content:"Metropole Restaurant, 609 Walnut Street, Cincinnati, Ohio 45202"
+            });
+
+            infowindow.open(map,marker);
+            marker.addListener("click", () => {
+                infowindow.open({
+                    anchor: marker, map, shouldFocus: false
+                });
+            });
+        }
+    </script>    
+</head>
+<body onload = "initMap()">
+    <style>
+    body{
+        background-image: url("https://i.imgur.com/JjtoV67.gif");
+    }
+    </style>
+    <div class="container">
+        <h1 style="color: white;"><marquee behavior="alternate"><color: white>Advanced Navigation System</marquee></h1>
+        <div id="map" style="width:100%; height:500px;"></div>
+    </div>
+</body>
+</html>
